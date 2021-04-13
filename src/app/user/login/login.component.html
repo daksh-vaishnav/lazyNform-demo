@@ -1,1 +1,50 @@
-<p>User login works!</p>
+<form class="form-signin" [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
+  <h1 class="h3 mb-3 font-weight-normal">User Data</h1>
+  <div formGroupName="userData">
+    <input
+      type="email"
+      class="form-control"
+      placeholder="User Name"
+      formControlName="unm"
+    />
+    <span *ngIf="!userForm.get('userData.unm').valid && userForm.get('userData.unm').touched" >
+      this field is required or something went wrong</span>
+    <!-- <span *ngIf="userForm.get('userData.unm').errors['required']">This field is required!</span> -->
+    <input
+      type="password"
+      class="form-control"
+      placeholder="Password"
+      formControlName="pwd"
+    />
+    <span
+      *ngIf="
+        !userForm.get('userData.pwd').valid &&
+        userForm.get('userData.pwd').touched
+      "
+    >
+      this field is required or something went wrong</span
+    >
+    <!-- <span *ngIf="userForm.get('userData.pwd').errors['required']">This field is required!</span> -->
+  </div>
+  <div *ngFor="let gender of genders" class="form-check form-check-inline">
+    <input
+      class="form-check-input"
+      type="radio"
+      formControlName="gender"
+      [value]="gender"
+    />{{ gender }}
+  </div>
+  <div formArrayName="hobbies">
+    <button class="btn btn-primary" (click)="onHobbieAdd()">Add hobbies</button>
+    <div *ngFor="let hobby of userForm.get('hobbies').controls; let i = index">
+      <input type="text" [formControlName]="i" />
+    </div>
+  </div>
+  <button
+    [ngClass]="{ disabled: !userForm.get('userData.pwd').valid }"
+    class="btn btn-lg btn-primary btn-block"
+    type="submit"
+  >
+    Submit Data
+  </button>
+</form>

@@ -1,1 +1,18 @@
-<p>User list works!</p>
+<div class="row">
+  <div class="col-3">
+    <ul class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <li class="nav-link" [ngClass]="{'active': val==='home'}" (click)="val='home'" id="v-pills-home-tab" data-toggle="pill" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</li>
+      <li class="nav-link" [ngClass]="{'active': val==='profile'}" (click)="val='profile'" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</li>
+      <li class="nav-link" [ngClass]="{'active': val==='msg'}" (click)="val='msg'" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</li>
+      <li class="nav-link" [ngClass]="{'active': val==='setting'}" (click)="val='setting'" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</li>
+    </ul>
+  </div>
+  <div class="col-9">
+    <div class="tab-content" id="v-pills-tabContent">
+      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+        
+       {{val}}
+      </div>
+    </div>
+  </div>
+</div>
